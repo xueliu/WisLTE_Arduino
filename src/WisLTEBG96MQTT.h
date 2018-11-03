@@ -49,6 +49,7 @@ typedef enum mqtt_session_type{
 }Mqtt_Session_Type_t;
 
 typedef enum mqtt_network_result_event{
+    MQTT_NETWORK_ERROR = -2,
     MQTT_NETWORK_OPEN_FAIL = -1,
     MQTT_NETWORK_OPEN_SUCCESS = 0,
     MQTT_NETWORK_WRONG_PARAMETER = 1,
@@ -59,12 +60,14 @@ typedef enum mqtt_network_result_event{
 }Mqtt_Network_Result_t;
 
 typedef enum mqtt_client_result_status{
+    PACKET_ERROR = -1,
     PACKET_SEND_SUCCESS_AND_RECV_ACK = 0,
     PACKET_RETRANSMISSION = 1,
     PACKET_SEND_FAIL = 2,
 }Mqtt_Client_Result_Status_t;
 
 typedef enum mqtt_urc_event{
+    MQTT_URC_ERROR = -1,
     MQTT_STATUS_EVENT = 0,
     MQTT_RECV_DATA_EVENT = 1,
 }Mqtt_URC_Event_t;

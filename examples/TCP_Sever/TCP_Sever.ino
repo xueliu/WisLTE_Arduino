@@ -3,8 +3,8 @@
 #include "WisLTEBG96TCPIP.h"
 #include "SoftwareSerial.h"
 
-#define DSerial Serial1
-#define ATSerial Serial
+#define DSerial Serial
+#define ATSerial Serial1
 // #define AT_TX_PIN  11
 // #define AT_RX_PIN  10
 // SoftwareSerial  DSerial(AT_RX_PIN, AT_TX_PIN);

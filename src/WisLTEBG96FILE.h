@@ -58,9 +58,9 @@ class WisLTEBG96FILE : public WisLTEBG96TCPIP
 
     bool GetFilesList(char *list);
 
-    bool DeleteFiles(char *filename);
+    bool DeleteFiles(const char *filename);
 
-    bool UploadFiles(char *filename, char *u_file);
+    bool UploadFiles(const char *filename, char *u_file);
 
     bool DownloadFiles(char *filename, char *d_file);
 

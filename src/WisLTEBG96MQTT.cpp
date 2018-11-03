@@ -109,9 +109,9 @@ Mqtt_Network_Result_t WisLTEBG96MQTT::OpenMQTTNetwork(unsigned int mqtt_index, c
             }
         }
         char *sta_buf = searchChrBuffer(',');
-        return atoi(sta_buf + 1);
+        return (Mqtt_Network_Result_t)atoi(sta_buf + 1);
     }
-    return -2;
+    return MQTT_NETWORK_ERROR;//-2;
 }
 
 bool WisLTEBG96MQTT::CloseMQTTNetwork(unsigned int mqtt_index)
@@ -157,9 +157,9 @@ Mqtt_Client_Result_Status_t WisLTEBG96MQTT::CreateMQTTClient(unsigned int mqtt_i
         strcpy(temp, sta_buf + 1);
         sta_buf = strchr(temp, ',');
         *sta_buf = '\0';
-        return atoi(temp);
+        return (Mqtt_Client_Result_Status_t) atoi(temp);
     }
-    return -1;
+    return PACKET_ERROR;
 }
 
 bool WisLTEBG96MQTT::CloseMQTTClient(unsigned int mqtt_index)
@@ -206,9 +206,9 @@ Mqtt_Client_Result_Status_t WisLTEBG96MQTT::MQTTSubscribeTopic(unsigned int mqtt
             p[i] = strtok(NULL,",");
         }
         p[i] = '\0';
-        return atoi(p[1]);
+        return (Mqtt_Client_Result_Status_t) atoi(p[1]);
     }
-    return -1;
+    return PACKET_ERROR;
 }
 
 Mqtt_Client_Result_Status_t WisLTEBG96MQTT::MQTTUnsubscribeTopic(unsigned int mqtt_index, unsigned int msg_id, char *topic)
@@ -229,9 +229,9 @@ Mqtt_Client_Result_Status_t WisLTEBG96MQTT::MQTTUnsubscribeTopic(unsigned int mq
         strcpy(temp, sta_buf + 1);
         sta_buf = strchr(temp, ',');
         *sta_buf = '\0';
-        return atoi(temp);
+        return (Mqtt_Client_Result_Status_t) atoi(temp);
     }
-    return -1;
+    return PACKET_ERROR;
 }
 
 Mqtt_Client_Result_Status_t WisLTEBG96MQTT::MQTTPublishMessages(unsigned int mqtt_index, unsigned int msg_id, Mqtt_Qos_t qos, char *topic, bool retain, char *publish_data)
@@ -245,8 +245,8 @@ Mqtt_Client_Result_Status_t WisLTEBG96MQTT::MQTTPublishMessages(unsigned int mqt
     }
     strcat(cmd, buf);
     if (sendAndSearchChr(cmd, '>', 2)){
-        char ctrl_z = 0x1A;
-        strcat(publish_data, ctrl_z);
+        const char ctrl_z = 0x1A;
+        strcat(publish_data, &ctrl_z);
         if (sendDataAndCheck(publish_data, MQTT_PUBLISH_MESSAGES, RESPONSE_ERROR, 150)){
             unsigned long start_time = millis();
             while(millis() - start_time < 500UL){
@@ -260,10 +260,10 @@ Mqtt_Client_Result_Status_t WisLTEBG96MQTT::MQTTPublishMessages(unsigned int mqt
             strcpy(temp, sta_buf + 1);
             sta_buf = strchr(temp, ',');
             *sta_buf = '\0';
-            return atoi(temp);
+            return (Mqtt_Client_Result_Status_t) atoi(temp);
         }
     }
-    return -1;
+    return PACKET_ERROR;
 }
 
 Mqtt_URC_Event_t WisLTEBG96MQTT::WaitCheckMQTTURCEvent(char *event, unsigned int timeout)
@@ -284,5 +284,5 @@ Mqtt_URC_Event_t WisLTEBG96MQTT::WaitCheckMQTTURCEvent(char *event, unsigned int
         strcpy(event, sta_buf + 2);
         return MQTT_STATUS_EVENT;
     }
-    return -1;
+    return MQTT_URC_ERROR;
 }

@@ -1,9 +1,9 @@
 #include "WisLTEBG96FILE.h"
 
-WisLTEBG96FILE::WisLTEBG96FILE()
-{
+// WisLTEBG96FILE::WisLTEBG96FILE()
+// {
 
-}
+// }
 
 WisLTEBG96FILE::~WisLTEBG96FILE()
 {
@@ -48,7 +48,7 @@ bool WisLTEBG96FILE::GetFilesList(char *list)
     return false;
 }
 
-bool WisLTEBG96FILE::DeleteFiles(char *filename)
+bool WisLTEBG96FILE::DeleteFiles(const char *filename)
 {
     char cmd[32],buf[32];
     strcpy(cmd, FILE_DELETE_FILES);
@@ -60,7 +60,7 @@ bool WisLTEBG96FILE::DeleteFiles(char *filename)
     return false;
 }
 
-bool WisLTEBG96FILE::UploadFiles(char *filename, char *u_file)
+bool WisLTEBG96FILE::UploadFiles(const char *filename, char *u_file)
 {
     char cmd[32],buf[32];
     strcpy(cmd, FILE_UPLOAD_FILES);

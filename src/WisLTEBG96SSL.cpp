@@ -85,7 +85,7 @@ bool WisLTEBG96SSL::SetSSLParameters(unsigned int ssl_index, SSL_Version_t s_ver
     return false;
 }
 
-bool WisLTEBG96SSL::SetSSLCertificate(unsigned int ssl_index, char *ca_cert_path, char *client_cert_path, char *client_key_path, bool validity_check)
+bool WisLTEBG96SSL::SetSSLCertificate(unsigned int ssl_index, const char *ca_cert_path, const char *client_cert_path, const char *client_key_path, bool validity_check)
 {
     char cmd[64],buf[32];
     strcpy(cmd, SSL_CONFIG_PARAMETER);
@@ -179,7 +179,7 @@ bool WisLTEBG96SSL::SetSSLCertificate(unsigned int ssl_index, char *ca_cert_path
 bool WisLTEBG96SSL::InitSSL(unsigned int ssl_index, char *ca_cert, char *client_cert, char *client_key, char *err_code)
 {
     unsigned long start_time = millis();
-    const char *e_str;
+    char *e_str;
     int f_err_code;
     if (!SetSSLParameters(ssl_index, ALL_VERSION, SUPPORT_ALL_ABOVE, 300)){
         e_str = "\r\nSSL ERROR: An error occurred while setting the ssl parameter.\r\n";
@@ -409,5 +409,5 @@ SSL_Socket_Event_t WisLTEBG96SSL::WaitCheckSSLSocketEvent(char *event, unsigned 
             return SSL_SOCKET_RECV_EVENT;
         }
     }
-    return 0;
+    return SSL_SOCKET_ERROR;
 }

@@ -58,6 +58,7 @@ typedef enum access_mode{
 }Access_Mode_t;
 
 typedef enum socket_event{
+    SOCKET_ERROR = 0,
     SOCKET_RECV_DATA_EVENT = 1,
     SOCKET_CLOSE_EVENT = 2,
     SOCKET_PDP_DEACTIVATION_EVENT = 3,
@@ -68,7 +69,7 @@ typedef enum socket_event{
 class WisLTEBG96TCPIP : public WisLTEBG96Common
 {
   public:
-    WisLTEBG96TCPIP();
+    // WisLTEBG96TCPIP();
 
     ~WisLTEBG96TCPIP();
 

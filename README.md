@@ -11,3 +11,6 @@ If necessary, the user can open or close the Debug serial port in the  `/src/Wis
 ### 3. Increase RX Buffer
 Since RX Buffer is set to 256 in order to apply Arduino UNO, RX Buffer can be set to 1024 or higher if the user's main control space is sufficient.
 The user can set the value of RX_BUFFER_LENGTH in the  `src/WisLTEBG96Serial.h` file. `#define RX_BUFFER_LENGTH  256`
+
+### 4. For Arduino 101
+The Serial and Serial1 should be exchanged with each other.

@@ -70,7 +70,7 @@ typedef enum net_type{
 class WisLTEBG96Common : public WisLTEBG96Serial
 {
   public:
-    WisLTEBG96Common();
+    // WisLTEBG96Common();
 
     ~WisLTEBG96Common();
 

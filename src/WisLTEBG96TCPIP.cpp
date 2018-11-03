@@ -1,9 +1,9 @@
 #include "WisLTEBG96TCPIP.h"
 
-WisLTEBG96TCPIP::WisLTEBG96TCPIP()
-{
+// WisLTEBG96TCPIP::WisLTEBG96TCPIP()
+// {
 
-}
+// }
 
 WisLTEBG96TCPIP::~WisLTEBG96TCPIP()
 {
@@ -384,5 +384,5 @@ Socket_Event_t WisLTEBG96TCPIP::WaitCheckSocketEvent(char *event, unsigned int t
             return SOCKET_PDP_DEACTIVATION_EVENT;
         }
     }
-    return 0;
+    return SOCKET_ERROR;
 }

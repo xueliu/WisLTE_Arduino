@@ -57,6 +57,7 @@ typedef enum ssl_cipher_suites{
 }SSL_Cipher_Suites_t;
 
 typedef enum ssl_socket_event{
+    SSL_SOCKET_ERROR = 0,
     SSL_SOCKET_RECV_EVENT = 1,
     SSL_SOCKET_CLOSE_EVENT = 2,
 }SSL_Socket_Event_t;
@@ -76,7 +77,7 @@ class WisLTEBG96SSL : public WisLTEBG96FILE
 
     bool SetSSLParameters(unsigned int ssl_index, SSL_Version_t s_version, SSL_Cipher_Suites_t s_ciper, unsigned int negotiation_time);
 
-    bool SetSSLCertificate(unsigned int ssl_index, char *ca_cert_path, char *client_cert_path, char *client_key_path, bool validity_check);
+    bool SetSSLCertificate(unsigned int ssl_index, const char *ca_cert_path, const char *client_cert_path, const char *client_key_path, bool validity_check);
 
     bool InitSSL(unsigned int ssl_index, char *ca_cert, char *client_cert, char *client_key, char *err_code);
 

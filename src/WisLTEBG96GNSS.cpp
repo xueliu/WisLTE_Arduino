@@ -1,9 +1,9 @@
 #include "WisLTEBG96GNSS.h"
 
-WisLTEBG96GNSS::WisLTEBG96GNSS()
-{
+// WisLTEBG96GNSS::WisLTEBG96GNSS()
+// {
 
-}
+// }
 
 WisLTEBG96GNSS::~WisLTEBG96GNSS()
 {

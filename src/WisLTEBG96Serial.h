@@ -35,7 +35,7 @@
 #include "Arduino.h"
 #include "WisLTEBG96ATCommand.h"
 
-#define RX_BUFFER_LENGTH  256
+#define RX_BUFFER_LENGTH  1024
 #define UART_DEBUG
 
 const unsigned long Band_list[] = {
@@ -59,7 +59,7 @@ typedef enum cmd_response{
 class WisLTEBG96Serial
 {
   public:
-    WisLTEBG96Serial();
+    // WisLTEBG96Serial() ;
 
     ~WisLTEBG96Serial();
 

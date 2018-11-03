@@ -1,9 +1,9 @@
 #include "WisLTEBG96Serial.h"
 
-WisLTEBG96Serial::WisLTEBG96Serial()
-{
-
-}
+// WisLTEBG96Serial::WisLTEBG96Serial()
+// {
+    
+// }
 
 WisLTEBG96Serial::~WisLTEBG96Serial()
 {
